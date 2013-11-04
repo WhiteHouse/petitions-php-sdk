@@ -16,7 +16,7 @@ Example Usage
     $base_url = 'https://api.whitehouse.gov/v1';
     $api_key = 'exampleKey';
 
-    $petitions_api = new petitionsApi($base_url, $api_key);
+    $petitions_api = new PetitionsApi($base_url, $api_key);
 
     ?>
 
@@ -25,16 +25,16 @@ Example Usage
 
     <?php
 
-    // Retrieve an array of petitions.
+    // Retrieve an array of petitions using the default request arguments.
     $response = $petitions_api->getPetitions();
     $petitions = $response->results;
 
     // Retrieve an array of petitions matching a set of parameters.
-    // In this case, retrieve results 20-30 for petitions that are open and
+    // In this case, retrieve results 21-30 for petitions that are open and
     // created before the specified date.
     $parameters = array(
       'status' => 'open',
-      'createdBefore' =>  1382566274,
+      'createdBefore' => 1382566274,
     );
     $limit = 10;
     $offset = 20;
@@ -59,13 +59,13 @@ Example Usage
 
     <?php
 
-    // Retrieve signatures for a specific petition
+    // Retrieve signatures for a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getSignatures($petition_id);
     $signatures = $reponse->results;
 
     // Retrieve signatures for a specific petition matching parameters.
-    // In this case, retrieve results 200-300 for signatures from Austin, Texas
+    // In this case, retrieve results 201-300 for signatures from Austin, Texas
     // created before the specified date.
     $parameters = array(
       'city' => 'Austin',
@@ -89,11 +89,11 @@ Example Usage
     $signature = array(
       'petition_id' => $petition_id,
       'email' => 'jane.doe@example.com',
-      'first_name' =>: 'Jane',
+      'first_name' => 'Jane',
       'last_name' => 'Doe',
       'zip' => '55555',
     );
-    $response = $petitions_api->sendSignatures($signature);
+    $response = $petitions_api->sendSignature($signature);
     if ($response->metadata->status == 200) {
       print 'Signatures submitted successfully.';
     }
@@ -172,5 +172,5 @@ NULL key will result in a failed request.
 Roadmap
 ----------
 
-* Make PSR-0 compliant
+* Make PSR-4 compliant
 * Add composer.json to declare curl dependency
