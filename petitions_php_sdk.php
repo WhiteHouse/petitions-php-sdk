@@ -5,7 +5,7 @@
  * Provides SDK for connecting to Petitions API resources.
  */
 
-class PetitionsApi {
+class PetitionsApiConnector {
   protected $apiHost = NULL;
   protected $apiKey = NULL;
 
