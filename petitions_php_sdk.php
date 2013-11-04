@@ -209,11 +209,11 @@ class PetitionsApiConnector {
    *   (optional) The maximum number of results to return. Defaults to 10.
    *
    * @param int $offset
-   *   (optional) The offset of the resultset to return. Default to 0.
+   *   (optional) The offset of the resultset to return. Defaults to 0.
    *
    * @param array $parameters
    *   (optional) An associative array of $_GET parameters to be appended to the
-   *   request. Default to empty array.
+   *   request. Defaults to empty array.
    *
    * @return object
    *   The JSON response.
@@ -261,7 +261,7 @@ class PetitionsApiConnector {
    *   (optional) The maximum number of results to return. Defaults to 10.
    *
    * @param int $offset
-   *   (optional) The offset of the resultset to return. Default to 0.
+   *   (optional) The offset of the resultset to return. Defaults to 0.
    *
    * @return object
    *   The JSON response.
