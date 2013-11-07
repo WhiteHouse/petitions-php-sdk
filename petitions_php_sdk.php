@@ -88,7 +88,7 @@ class PetitionsApiConnector {
    *
    * @throws Exception
    */
-  protected function verifyResponse($response, $url) {
+  protected function verifyResponse(&$response, $url) {
     if (empty($response->metadata->responseInfo->status)) {
       $e = new Exception("Could not connect to Petitions API.");
       $e->response = $response;
