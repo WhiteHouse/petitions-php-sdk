@@ -3,6 +3,8 @@
 /**
  * @file
  * Provides SDK for connecting to Petitions API resources.
+ *
+ * @version 0.1
  */
 
 class PetitionsApiConnector {
@@ -31,7 +33,7 @@ class PetitionsApiConnector {
    *   (optional) Array of GET values. Defaults to an empty array.
    *
    * @param array $post_vals
-   *   (optional) String to be sent with POST request. Defauls to NULL.
+   *   (optional) String to be sent with POST request. Defaults to NULL.
    *
    * @return object
    *   The decoded JSON object.
@@ -182,7 +184,7 @@ class PetitionsApiConnector {
    * @param string $petition_id
    *   The ID of the petition to fetch.
    *
-   * @param boolean $mock
+   * @param bool $mock
    *   Indicate whether returned data should be mock data (not real).
    *
    * @return object
