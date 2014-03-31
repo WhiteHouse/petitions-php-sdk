@@ -16,7 +16,7 @@ Example Usage
     $base_url = 'https://api.whitehouse.gov/v1';
     $api_key = 'exampleKey';
 
-    $petitions_api = new PetitionsApiConnector($base_url, $api_key);
+    $petitions_api = new PetitionsPhpSdkApiConnector($base_url, $api_key);
 
     ?>
 

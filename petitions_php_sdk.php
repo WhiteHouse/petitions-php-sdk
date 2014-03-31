@@ -7,7 +7,7 @@
  * @version 0.1
  */
 
-class PetitionsApiConnector {
+class PetitionsPhpSdkApiConnector {
   protected $apiHost = NULL;
   protected $apiKey = NULL;
   protected $allowInsecure = FALSE;
