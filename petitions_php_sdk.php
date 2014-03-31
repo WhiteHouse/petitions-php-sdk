@@ -102,11 +102,13 @@ class PetitionsPhpSdkApiConnector {
    * @param string $url
    *   The URL of the curl request.
    *
-   * @throws Exception
+   * @throws PetitionsPhpSdkConnectionException
+   * @throws PetitionsPhpSdkResponseServerException
+   * @throws PetitionsPhpSdkResponseClientException
    */
   protected function verifyResponse(&$response, $url) {
     if (empty($response->metadata->responseInfo->status)) {
-      $e = new Exception("Could not connect to Petitions API.");
+      $e = new PetitionsPhpSdkConnectionException("Could not connect to Petitions API.");
       $e->response = $response;
       $e->requestUrl = $url;
 
@@ -114,7 +116,15 @@ class PetitionsPhpSdkApiConnector {
     }
     elseif ($response->metadata->responseInfo->status != 200) {
       $developer_message = $response->metadata->responseInfo->developerMessage;
-      $e = new Exception("Petitions API returned an Error code: " . $developer_message);
+
+      // Distinguish between server errors and client errors.
+      if ($response->metadata->responseInfo->status == 500) {
+        $e = new PetitionsPhpSdkResponseServerException("Petitions API returned an Error code: " . $developer_message);
+      }
+      else {
+        $e = new PetitionsPhpSdkResponseClientException("Petitions API returned an Error code: " . $developer_message);
+      }
+
       $e->response = $response;
       $e->requestUrl = $url;
 
@@ -298,3 +308,13 @@ class PetitionsPhpSdkApiConnector {
     return $this->runCurl($resource, $get_vals);
   }
 }
+
+class PetitionsPhpSdkException extends Exception {}
+
+class PetitionsPhpSdkConnectionException extends PetitionsPhpSdkException {}
+
+class PetitionsPhpSdkResponseException extends PetitionsPhpSdkException {}
+
+class PetitionsPhpSdkResponseServerException extends PetitionsPhpSdkResponseException {}
+
+class PetitionsPhpSdkResponseClientException extends PetitionsPhpSdkResponseException {}
