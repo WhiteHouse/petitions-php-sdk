@@ -10,13 +10,23 @@
 class PetitionsApiConnector {
   protected $apiHost = NULL;
   protected $apiKey = NULL;
+  protected $allowInsecure = FALSE;
 
   /**
    * Class Constructor.
+   *
+   * @param string $base
+   *   The API host base URL, e.g., https://example.com.
+   * @param string $key
+   *   The API key.
+   * @param bool $allow_insecure
+   *   (optional) Whether or not to allows insecure SSL connection. TRUE to
+   *   allow. Defaults to FALSE.
    */
-  public function __construct($base, $key) {
-    $this->apiKey = $key;
+  public function __construct($base, $key, $allow_insecure = FALSE) {
     $this->apiHost = $base;
+    $this->apiKey = $key;
+    $this->allowInsecure = (bool) $allow_insecure;
 
     // This URL is used to test the connection.
     $test_url = "petitions.json";
@@ -53,9 +63,13 @@ class PetitionsApiConnector {
 
     $options = array(
       CURLOPT_RETURNTRANSFER => TRUE,
-      CURLOPT_SSL_VERIFYPEER => FALSE,
       CURLOPT_TIMEOUT => 3,
     );
+
+    if ($this->allowInsecure) {
+      $options[CURLOPT_SSL_VERIFYPEER] = FALSE;
+      $options[CURLOPT_SSL_VERIFYHOST] = FALSE;
+    }
 
     if ($post_vals != NULL) {
       $post_string = json_encode($post_vals);
