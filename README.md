@@ -132,7 +132,7 @@ A proper implementation of this SDK will catch the exceptions.
       print 'The following exception was caught: ' . $e->getMessage() . "\n";
       print "The following request was made to the API: \n";
       print $e->requestUrl . "\n";
-      print "The following response was recieved from the API: \n";
+      print "The following response was received from the API: \n";
       print_r($e->response);
     }
 
