@@ -113,7 +113,7 @@ Example Usage
 
 ### Exception handling
 
-By design, the SDK will throw an exception when a request is unsucessful.
+By design, the SDK will throw an exception when a request is unsuccessful.
 A proper implementation of this SDK will catch the exceptions.
 
     <?php
