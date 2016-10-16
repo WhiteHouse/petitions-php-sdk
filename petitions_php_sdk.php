@@ -259,7 +259,7 @@ class PetitionsPhpSdkApiConnector {
   }
 
   /**
-   * Send a signature to Petitiosn API.
+   * Send a signature to Petitions API.
    *
    * @param array $signature
    *   An associative array. Verify that correct signature keys

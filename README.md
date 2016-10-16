@@ -51,7 +51,7 @@ Example Usage
     // Retrieve a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getPetition($petition_id);
-    $petition = $reponse->results[0];
+    $petition = $response->results[0];
 
     ?>
 
@@ -62,7 +62,7 @@ Example Usage
     // Retrieve signatures for a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getSignatures($petition_id);
-    $signatures = $reponse->results;
+    $signatures = $response->results;
 
     // Retrieve signatures for a specific petition matching parameters.
     // In this case, retrieve results 201-300 for signatures from Austin, Texas
@@ -76,7 +76,7 @@ Example Usage
     $offset = 200;
     $petition_id = 'exampleID';
     $response = $petitions_api->getSignatures($petition_id, $limit, $offset, $parameters);
-    $signatures = $reponse->results;
+    $signatures = $response->results;
 
     ?>
 
@@ -107,13 +107,13 @@ Example Usage
     // Get validations for a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getValidations($petition_id);
-    $validated_signatures = $reponse->results;
+    $validated_signatures = $response->results;
 
     ?>
 
 ### Exception handling
 
-By design, the SDK will throw an exception when a request is unsucessful.
+By design, the SDK will throw an exception when a request is unsuccessful.
 A proper implementation of this SDK will catch the exceptions.
 
     <?php
@@ -132,7 +132,7 @@ A proper implementation of this SDK will catch the exceptions.
       print 'The following exception was caught: ' . $e->getMessage() . "\n";
       print "The following request was made to the API: \n";
       print $e->requestUrl . "\n";
-      print "The following response was recieved from the API: \n";
+      print "The following response was received from the API: \n";
       print_r($e->response);
     }
 
