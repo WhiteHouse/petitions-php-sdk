@@ -51,7 +51,7 @@ Example Usage
     // Retrieve a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getPetition($petition_id);
-    $petition = $reponse->results[0];
+    $petition = $response->results[0];
 
     ?>
 
@@ -62,7 +62,7 @@ Example Usage
     // Retrieve signatures for a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getSignatures($petition_id);
-    $signatures = $reponse->results;
+    $signatures = $response->results;
 
     // Retrieve signatures for a specific petition matching parameters.
     // In this case, retrieve results 201-300 for signatures from Austin, Texas
@@ -76,7 +76,7 @@ Example Usage
     $offset = 200;
     $petition_id = 'exampleID';
     $response = $petitions_api->getSignatures($petition_id, $limit, $offset, $parameters);
-    $signatures = $reponse->results;
+    $signatures = $response->results;
 
     ?>
 
@@ -107,7 +107,7 @@ Example Usage
     // Get validations for a specific petition.
     $petition_id = 'exampleID';
     $response = $petitions_api->getValidations($petition_id);
-    $validated_signatures = $reponse->results;
+    $validated_signatures = $response->results;
 
     ?>
 
